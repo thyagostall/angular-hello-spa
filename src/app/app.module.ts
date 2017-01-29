@@ -8,16 +8,20 @@ import { TransactionComponent } from './transaction.component';
 import { TransactionService } from './transaction.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TransactionComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
-  providers: [TransactionService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        TransactionComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule
+    ],
+    providers: [
+        TransactionService
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

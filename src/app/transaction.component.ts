@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Transaction } from './transaction'
+import { TransactionService } from './transaction.service';
 
 @Component({
 	moduleId: module.id,
@@ -10,7 +11,11 @@ import { Transaction } from './transaction'
 export class TransactionComponent {
 	transaction = new Transaction()
 
+	constructor(private transactionService: TransactionService) { }
+
 	save(): void {
-		console.log(this.transaction);
+		this.transactionService
+			.create(this.transaction)
+			.subscribe(result => console.log(result.id));
 	}
 }
