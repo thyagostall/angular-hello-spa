@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { TransactionComponent } from './transaction.component';
 import { TransactionListComponent } from './transaction-list.component';
 import { TransactionService } from './transaction.service';
@@ -17,7 +18,8 @@ import { TransactionService } from './transaction.service';
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        AppRoutingModule
     ],
     providers: [
         TransactionService

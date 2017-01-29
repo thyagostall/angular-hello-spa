@@ -4,5 +4,8 @@
 		<span>{{ transaction.title }}</span>
 		<span>{{ transaction.date }}</span>
 		<span>{{ transaction.value }}</span>
+		<button (click)=onSelect(transaction)>Edit</button>
+		<button (click)=onDelete(transaction)>Delete</button>
 	</li>
 </ul>
+<button (click)="onAddNew()">Add New</button>

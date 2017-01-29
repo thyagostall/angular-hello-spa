@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Transaction } from './transaction'
 import { TransactionService } from './transaction.service';
@@ -11,12 +13,36 @@ import { TransactionService } from './transaction.service';
 export class TransactionComponent {
 	transaction = new Transaction()
 
-	constructor(private transactionService: TransactionService) { }
+	constructor(
+		private transactionService: TransactionService,
+		private route: ActivatedRoute,
+		private location: Location
+	) { }
+
+	ngOnInit(): void {
+		this.route.params
+			.switchMap((params: Params) => this.transactionService.getById(+params['id']))
+			.subscribe(transaction => {
+				if (transaction) {
+					this.transaction = transaction
+				}
+			});
+	}
 
 	save(): void {
-		this.transactionService
-			.create(this.transaction)
-			.subscribe(result => console.log(result.id));
-		this.transaction = new Transaction();
+		let observable;
+		if (this.transaction.id) {
+			observable = this.transactionService
+							 .update(this.transaction);
+		} else {
+			observable = this.transactionService
+							 .create(this.transaction);
+		}
+
+		observable.subscribe(() => this.goBack());
+	}
+
+	goBack(): void {
+		this.location.back();
 	}
 }

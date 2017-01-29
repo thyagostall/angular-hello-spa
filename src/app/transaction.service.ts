@@ -10,16 +10,41 @@ export class TransactionService {
 	]
 
 	create(transaction: Transaction): Observable<Transaction> {
-		let id = this.DATA[this.DATA.length - 1].id;
-		id = id + 1;
-		
-		transaction.id = id;
+		let id = this.DATA[this.DATA.length - 1].id;		
+		transaction.id = id + 1;
 
 		this.DATA.push(transaction);
 		return Observable.of(transaction);
 	}
 
+	update(transaction: Transaction): Observable<Transaction> {
+		return Observable.of(transaction);
+	}
+
+	delete(transaction: Transaction): Observable<boolean> {
+		let index;
+		for (var i = 0; i < this.DATA.length; i++) {
+			if (this.DATA[i].id === transaction.id) {
+				index = i;
+			}
+		}
+
+		this.DATA.splice(index, 1);
+		return Observable.of(index);
+	}
+
 	get(): Observable<Transaction[]> {
 		return Observable.of(this.DATA as Transaction[]);
+	}
+
+	getById(id: number): Observable<Transaction> {
+		let index;
+		for (var i = 0; i < this.DATA.length; i++) {
+			if (this.DATA[i].id === id) {
+				index = i;
+			}
+		}
+
+		return Observable.of(this.DATA[index]);
 	}
 }
