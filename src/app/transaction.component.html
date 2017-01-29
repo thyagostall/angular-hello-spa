@@ -1,0 +1,13 @@
+<div *ngIf="transaction">
+	<h2>Transaction</h2>
+	<div>
+		<label>title: </label><input placeholder="title" [(ngModel)]="transaction.title"> {{ transaction.title }}
+	</div>
+	<div>
+		<label>date: </label><input type="date" placeholder="date" [(ngModel)]="transaction.date"> {{ transaction.date | date:"dd/MM/yyyy" }}
+	</div>
+	<div>
+		<label>value: </label><input type="number" placeholder="value" [(ngModel)]="transaction.value"> {{ transaction.value | currency }}
+	</div>
+	<button (click)="save()">Add</button>
+</div>

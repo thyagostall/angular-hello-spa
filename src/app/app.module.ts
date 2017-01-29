@@ -4,17 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TransactionComponent } from './transaction.component';
+import { TransactionService } from './transaction.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
