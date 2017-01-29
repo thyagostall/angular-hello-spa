@@ -17,5 +17,6 @@ export class TransactionComponent {
 		this.transactionService
 			.create(this.transaction)
 			.subscribe(result => console.log(result.id));
+		this.transaction = new Transaction();
 	}
 }
