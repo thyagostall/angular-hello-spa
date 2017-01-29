@@ -11,7 +11,7 @@ import { TransactionService } from './transaction.service';
 	templateUrl: 'transaction.component.html'
 })
 export class TransactionComponent {
-	transaction = new Transaction()
+	transaction: Transaction;
 
 	constructor(
 		private transactionService: TransactionService,
@@ -23,9 +23,10 @@ export class TransactionComponent {
 		this.route.params
 			.switchMap((params: Params) => this.transactionService.getById(+params['id']))
 			.subscribe(transaction => {
-				if (transaction) {
-					this.transaction = transaction
+				if (!transaction) {
+					transaction = new Transaction();
 				}
+				this.transaction = transaction				
 			});
 	}
 
