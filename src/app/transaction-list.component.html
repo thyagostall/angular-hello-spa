@@ -1,11 +1,22 @@
-<ul>
-	<li *ngFor="let transaction of transactions | async">
-		<span>{{ transaction.id }}</span>
-		<span>{{ transaction.title }}</span>
-		<span>{{ transaction.date }}</span>
-		<span>{{ transaction.value }}</span>
-		<button (click)=onSelect(transaction)>Edit</button>
-		<button (click)=onDelete(transaction)>Delete</button>
-	</li>
-</ul>
-<button (click)="onAddNew()">Add New</button>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Title</td>
+			<td>Date</td>
+			<td>Value</td>
+			<td>Actions</td>
+		</tr>
+	</thead>
+	<tr *ngFor="let transaction of transactions | async">
+		<td>{{ transaction.id }}</td>
+		<td>{{ transaction.title }}</td>
+		<td>{{ transaction.date }}</td>
+		<td>{{ transaction.value }}</td>
+		<td>
+			<button class="btn btn-default btn-xs" (click)=onSelect(transaction)>Edit</button>
+			<button class="btn btn-danger btn-xs" (click)=onDelete(transaction)>Delete</button>
+		</td>
+	</tr>
+</table>
+<button class="btn btn-primary" (click)="onAddNew()">Add New</button>

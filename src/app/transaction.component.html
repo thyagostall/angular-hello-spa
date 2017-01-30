@@ -1,13 +1,16 @@
 <div *ngIf="transaction">
-	<h2>Transaction</h2>
-	<div>
-		<label>title: </label><input placeholder="title" [(ngModel)]="transaction.title"> {{ transaction.title }}
+	<div class="form-group">
+		<label for="title">Title: </label>
+		<input class="form-control" id="title" placeholder="title" [(ngModel)]="transaction.title"> {{ transaction.title }}
 	</div>
-	<div>
-		<label>date: </label><input type="date" placeholder="date" [(ngModel)]="transaction.date"> {{ transaction.date | date:"dd/MM/yyyy" }}
+	<div class="form-group">
+		<label>Date: </label>
+		<input class="form-control" type="date" placeholder="date" [(ngModel)]="transaction.date"> {{ transaction.date | date:"dd/MM/yyyy" }}
 	</div>
-	<div>
-		<label>value: </label><input type="number" placeholder="value" [(ngModel)]="transaction.value"> {{ transaction.value | currency }}
+	<div class="form-group">
+		<label>Value: </label>
+		<input class="form-control" type="number" placeholder="value" [(ngModel)]="transaction.value"> {{ transaction.value | currency }}
 	</div>
-	<button (click)="save()">Save</button>
+	<button class="btn btn-primary" (click)="save()">Save</button>
+	<button class="btn btn-default" (click)="goBack()">Cancel</button>
 </div>
