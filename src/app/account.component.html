@@ -1,0 +1,8 @@
+<div>
+	<div class="form-group">
+		<label for="name">Name:</label>
+		<input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="account.name">
+	</div>
+	<button class="btn btn-primary" (click)="save()">Save</button>
+	<button class="btn btn-default" (click)="goBack()">Cancel</button>
+</div>

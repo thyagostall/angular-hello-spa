@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TransactionComponent } from './transaction.component';
+import { AccountComponent } from './account.component';
+import { AccountListComponent } from './account-list.component';
 import { TransactionListComponent } from './transaction-list.component';
 import { TransactionService } from './transaction.service';
 
@@ -13,7 +15,9 @@ import { TransactionService } from './transaction.service';
     declarations: [
         AppComponent,
         TransactionComponent,
-        TransactionListComponent
+        TransactionListComponent,
+        AccountComponent,
+        AccountListComponent
     ],
     imports: [
         BrowserModule,
