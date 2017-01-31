@@ -17,9 +17,7 @@ export class AccountComponent implements OnInit {
 	constructor(
 		private location: Location,
 		private route: ActivatedRoute,
-		private accountService: AccountService) {
-
-	}
+		private accountService: AccountService) { }
 
 	ngOnInit(): void {
 		this.route.params
@@ -29,7 +27,13 @@ export class AccountComponent implements OnInit {
 	}
 
 	save(): void {
-		console.log("save");
+		let observable;
+		if (this.account.id) {
+			observable = this.accountService.update(this.account);
+		} else {
+			observable = this.accountService.create(this.account);
+		}
+		observable.subscribe(account => this.account = account);
 	}
 
 	goBack(): void {
