@@ -4,11 +4,17 @@
 			<tr>
 				<td>Id</td>
 				<td>Name</td>
+				<td>Actions</td>
 			</tr>
 		</thead>
-		<tr *ngFor="let account of accounts | async">
+		<tr *ngFor="let account of data">
 			<td>{{ account.id }}</td>
 			<td>{{ account.name }}</td>
+			<td>
+				<button class="btn btn-default btn-xs" (click)=onSelect(account)>Edit</button>
+				<button class="btn btn-danger btn-xs" (click)=onDelete(account)>Delete</button>
+			</td>
 		</tr>
 	</table>
+	<button class="btn btn-primary" (click)="onAddNew()">New</button>
 </div>

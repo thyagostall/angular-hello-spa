@@ -29,6 +29,10 @@ const routes: Routes = [
 		component: AccountComponent
 	},
 	{
+		path: 'account/:id',
+		component: AccountComponent
+	},	
+	{
 		path: 'accounts',
 		component: AccountListComponent
 	}

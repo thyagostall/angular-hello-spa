@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -10,7 +10,7 @@ import { TransactionService } from './transaction.service';
 	selector: 'transaction',
 	templateUrl: 'transaction.component.html'
 })
-export class TransactionComponent {
+export class TransactionComponent implements OnInit {
 	transaction: Transaction;
 
 	constructor(
@@ -23,10 +23,10 @@ export class TransactionComponent {
 		this.route.params
 			.switchMap((params: Params) => this.transactionService.getById(+params['id']))
 			.subscribe(transaction => {
+				this.transaction = transaction;				
 				if (!transaction) {
 					transaction = new Transaction();
 				}
-				this.transaction = transaction				
 			});
 	}
 

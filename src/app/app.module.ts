@@ -5,11 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 import { TransactionComponent } from './transaction.component';
+import { TransactionListComponent } from './transaction-list.component';
 import { AccountComponent } from './account.component';
 import { AccountListComponent } from './account-list.component';
-import { TransactionListComponent } from './transaction-list.component';
+
 import { TransactionService } from './transaction.service';
+import { AccountService } from './account.service';
 
 @NgModule({
     declarations: [
@@ -26,7 +29,8 @@ import { TransactionService } from './transaction.service';
         AppRoutingModule
     ],
     providers: [
-        TransactionService
+        TransactionService,
+        AccountService
     ],
     bootstrap: [
         AppComponent

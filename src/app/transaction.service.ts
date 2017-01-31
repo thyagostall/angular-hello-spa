@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import 'rxjs/add/observable/of';
 
+@Injectable()
 export class TransactionService {
 	private DATA = [
 		{ id: 1, title: "Grocery", date: new Date(2017, 1, 15), value:-122.77 }
