@@ -35,6 +35,8 @@ export class AccountListComponent implements OnInit {
 	}
 
 	onDelete(account: Account): void {
-
+		this.accountService
+			.delete(account)
+			.subscribe(deletedId => this.data = this.data.filter(i => i.id !== deletedId));
 	}
 }

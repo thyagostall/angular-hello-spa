@@ -28,12 +28,16 @@ export class AccountComponent implements OnInit {
 
 	save(): void {
 		let observable;
+		console.log("Saving: " + this.account.id);
 		if (this.account.id) {
 			observable = this.accountService.update(this.account);
 		} else {
 			observable = this.accountService.create(this.account);
 		}
-		observable.subscribe(account => this.account = account);
+		observable.subscribe(account => {
+			this.account = account
+			this.goBack();
+		});
 	}
 
 	goBack(): void {

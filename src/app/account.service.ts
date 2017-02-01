@@ -6,7 +6,9 @@ import { Account } from './account';
 @Injectable()
 export class AccountService {
 	private DATA = [
-		{ id: 1, name: "Checkings" }
+		{ id: 1, name: "Checkings" },
+		{ id: 2, name: "Savings" },
+		{ id: 3, name: "Credit Card" }
 	]
 
 	get(): Observable<Account[]> {
@@ -23,6 +25,10 @@ export class AccountService {
 	}
 
 	create(account: Account): Observable<Account> {
+		let itemId = this.DATA[this.DATA.length - 1].id;
+
+		account.id = itemId + 1;
+
 		this.DATA.push(account);
 		return Observable.of(account);
 	}
@@ -33,6 +39,12 @@ export class AccountService {
 			this.DATA[index] = account;
 		}
 		return Observable.of(account);
+	}
+
+	delete(account: Account): Observable<number> {
+		let index = this.indexOfItemWithId(account.id);
+		this.DATA.splice(index, 1);
+		return Observable.of(account.id);	
 	}
 
 	private indexOfItemWithId(id: number): number {
