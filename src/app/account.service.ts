@@ -18,7 +18,7 @@ export class AccountService {
 	getById(id: number): Observable<Account> {
 		let index = this.indexOfItemWithId(id);
 		if (index >= 0) {
-			return Observable.of(this.DATA[index]);
+			return Observable.of(this.cloneItem(this.DATA[index]));
 		} else {
 			return Observable.empty();
 		}
@@ -45,6 +45,13 @@ export class AccountService {
 		let index = this.indexOfItemWithId(account.id);
 		this.DATA.splice(index, 1);
 		return Observable.of(account.id);	
+	}
+
+	private cloneItem(account: Account): Account {
+		let result = new Account();
+		result.id = account.id;
+		result.name = account.name;
+		return result;
 	}
 
 	private indexOfItemWithId(id: number): number {
