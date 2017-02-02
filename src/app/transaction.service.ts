@@ -19,6 +19,8 @@ export class TransactionService {
 	}
 
 	update(transaction: Transaction): Observable<Transaction> {
+		let i = this.indexOfItemWithId(transaction.id);
+		this.DATA[i] = transaction;
 		return Observable.of(transaction);
 	}
 
@@ -46,6 +48,24 @@ export class TransactionService {
 			}
 		}
 
-		return Observable.of(this.DATA[index]);
+		return Observable.of(this.cloneItem(this.DATA[index]));
 	}
+
+	private cloneItem(account: Transaction): Transaction {
+		let result = new Transaction();
+		result.id = account.id;
+		result.title = account.title;
+		result.date = account.date;
+		result.value = account.value;
+		return result;
+	}
+
+	private indexOfItemWithId(id: number): number {
+		for (let i = 0; i < this.DATA.length; i++) {
+			if (this.DATA[i].id == id) {
+				return i;
+			}
+		}
+		return undefined;
+	}	
 }

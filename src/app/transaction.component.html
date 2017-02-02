@@ -1,15 +1,15 @@
 <div *ngIf="transaction">
 	<div class="form-group">
 		<label for="title">Title: </label>
-		<input class="form-control" id="title" placeholder="title" [(ngModel)]="transaction.title"> {{ transaction.title }}
+		<input class="form-control" id="title" placeholder="title" [(ngModel)]="transaction.title">
 	</div>
 	<div class="form-group">
 		<label>Date: </label>
-		<input class="form-control" type="date" placeholder="date" [(ngModel)]="transaction.date"> {{ transaction.date | date:"dd/MM/yyyy" }}
+		<input class="form-control" type="date" placeholder="date" [(ngModel)]="transaction.date">
 	</div>
 	<div class="form-group">
 		<label>Value: </label>
-		<input class="form-control" type="number" placeholder="value" [(ngModel)]="transaction.value"> {{ transaction.value | currency }}
+		<input class="form-control" type="number" placeholder="value" [(ngModel)]="transaction.value">
 	</div>
 	<button class="btn btn-primary" (click)="save()">Save</button>
 	<button class="btn btn-default" (click)="goBack()">Cancel</button>
