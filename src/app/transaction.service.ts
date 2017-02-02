@@ -7,7 +7,8 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class TransactionService {
 	private DATA = [
-		{ id: 1, title: "Grocery", date: new Date(2017, 1, 15), value:-122.77 }
+		{ id: 1, title: "Grocery", date: new Date(2017, 0, 2), value: -122.77 },
+		{ id: 2, title: "Liquor Store", date: new Date(2016, 11, 30), value: -25 }
 	]
 
 	create(transaction: Transaction): Observable<Transaction> {
@@ -20,6 +21,7 @@ export class TransactionService {
 
 	update(transaction: Transaction): Observable<Transaction> {
 		let i = this.indexOfItemWithId(transaction.id);
+		console.log("Type: " + transaction.date.constructor.name);
 		this.DATA[i] = transaction;
 		return Observable.of(transaction);
 	}

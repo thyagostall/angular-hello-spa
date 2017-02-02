@@ -11,7 +11,7 @@
 	<tr *ngFor="let transaction of transactions | async">
 		<td>{{ transaction.id }}</td>
 		<td>{{ transaction.title }}</td>
-		<td>{{ transaction.date }}</td>
+		<td>{{ transaction.date | date:"dd/MM/yyyy" }}</td>
 		<td>{{ transaction.value }}</td>
 		<td>
 			<button class="btn btn-default btn-xs" (click)=onSelect(transaction)>Edit</button>
