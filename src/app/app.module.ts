@@ -13,6 +13,7 @@ import { AccountListComponent } from './account-list.component';
 
 import { TransactionService } from './transaction.service';
 import { AccountService } from './account.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { AccountService } from './account.service';
     ],
     providers: [
         TransactionService,
-        AccountService
+        AccountService,
+        AuthGuard
     ],
     bootstrap: [
         AppComponent
