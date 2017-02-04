@@ -14,6 +14,6 @@ export class AuthService {
 	}
 
 	hasSession(): boolean {
-		return localStorage.getItem(AuthService.key) !== undefined;
+		return localStorage.getItem(AuthService.key) !== null;
 	}
 }

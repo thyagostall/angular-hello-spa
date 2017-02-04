@@ -10,10 +10,12 @@ import { TransactionComponent } from './transaction.component';
 import { TransactionListComponent } from './transaction-list.component';
 import { AccountComponent } from './account.component';
 import { AccountListComponent } from './account-list.component';
+import { LoginComponent } from './login.component';
 
 import { TransactionService } from './transaction.service';
 import { AccountService } from './account.service';
 import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,8 @@ import { AuthGuard } from './auth-guard.service';
         TransactionComponent,
         TransactionListComponent,
         AccountComponent,
-        AccountListComponent
+        AccountListComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -32,7 +35,8 @@ import { AuthGuard } from './auth-guard.service';
     providers: [
         TransactionService,
         AccountService,
-        AuthGuard
+        AuthGuard,
+        AuthService
     ],
     bootstrap: [
         AppComponent
