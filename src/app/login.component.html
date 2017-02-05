@@ -1,4 +1,8 @@
-<div>
+<div class="col-xs-8 col-sm-5">
+	<div *ngIf="loginError" class="alert alert-danger">
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		Invalid username/password combination.
+	</div>
 	<div class="form-group">
 		<label for="username">Username</label>
 		<input class="form-control" type="text" name="username" [(ngModel)]="model.username">

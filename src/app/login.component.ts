@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 export class LoginComponent {
 	model: any = {};
 	returnUrl: string;
+	loginError = false;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -17,6 +18,8 @@ export class LoginComponent {
 		private authService: AuthService) {}
 
 	ngOnInit() {
+		this.authService.logout();
+
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 	}
 
@@ -26,6 +29,9 @@ export class LoginComponent {
 		
 		this.authService
 			.login(username, password)
-			.subscribe(result => this.router.navigate([this.returnUrl]));
+			.subscribe(result => {
+				this.loginError = !result;
+				this.router.navigate([this.returnUrl])
+			});
 	}
 }

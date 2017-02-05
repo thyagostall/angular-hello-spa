@@ -21,4 +21,9 @@ export class AuthService {
 	hasSession(): boolean {
 		return localStorage.getItem(AuthService.key) !== null;
 	}
+
+	logout(): Observable<void> {
+		localStorage.removeItem(AuthService.key);
+		return Observable.of(null);
+	}
 }
