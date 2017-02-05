@@ -45,7 +45,7 @@ export class TransactionService {
 	getById(id: number): Observable<Transaction> {
 		let index;
 		for (var i = 0; i < this.DATA.length; i++) {
-			if (this.DATA[i].id === id) {
+			if (this.DATA[i].id == id) {
 				index = i;
 			}
 		}

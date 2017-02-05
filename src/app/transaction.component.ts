@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { Transaction } from './transaction'
 import { TransactionService } from './transaction.service';
 
+import { Observable } from 'rxjs';
+
 @Component({
 	moduleId: module.id,
 	selector: 'transaction',
@@ -21,13 +23,9 @@ export class TransactionComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.params
-			.switchMap((params: Params) => this.transactionService.getById(+params['id']))
-			.subscribe(transaction => {
-				this.transaction = transaction;				
-				if (!transaction) {
-					transaction = new Transaction();
-				}
-			});
+			.map(params => params['id'])
+			.switchMap(id => id ? this.transactionService.getById(id) : Observable.of(new Transaction()))
+			.subscribe(transaction => this.transaction = transaction);
 	}
 
 	save(): void {
