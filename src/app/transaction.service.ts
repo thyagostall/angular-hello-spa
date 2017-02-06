@@ -47,7 +47,7 @@ export class TransactionService {
 		for (var i = 0; i < this.DATA.length; i++) {
 			if (this.DATA[i].id == id) {
 				index = i;
-			}
+			}	
 		}
 
 		return Observable.of(this.cloneItem(this.DATA[index]));
